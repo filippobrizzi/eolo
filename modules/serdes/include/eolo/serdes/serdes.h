@@ -10,11 +10,11 @@
 namespace eolo::serdes {
 
 template <class T>
-concept ProtobufSerializable = requires(T proto, protobuf::SerializerBuffer ser_buffer,
-                                        protobuf::DeserializerBuffer des_buffer) {
-  { toProtobuf(ser_buffer, proto) };
-  { fromProtobuf(des_buffer, proto) };
-};
+concept ProtobufSerializable =
+    requires(T proto, protobuf::SerializerBuffer ser_buffer, protobuf::DeserializerBuffer des_buffer) {
+      { toProtobuf(ser_buffer, proto) };
+      { fromProtobuf(des_buffer, proto) };
+    };
 
 template <class T>
 [[nodiscard]] auto serialize(const T& data) -> std::vector<std::byte>;

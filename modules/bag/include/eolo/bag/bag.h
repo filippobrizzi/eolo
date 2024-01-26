@@ -70,6 +70,7 @@ public:
   readNext(std::vector<std::byte>& buffer) -> std::optional<proto::LogRecordMetadata> = 0;
 };
 
+//! Provide an utility to skip messages when reading a bag.
 class IBagRecordFilter {
 public:
   virtual ~IBagRecordFilter() = default;
@@ -89,6 +90,7 @@ struct InMemoryBagParameters {
   BagHeader header;
   std::vector<BagRecord> records;
 };
+
 [[nodiscard]] auto createInMemoryBag(const InMemoryBagParameters& bag_params) -> std::unique_ptr<IBag>;
 
 [[nodiscard]] auto createFileBag(const std::filesystem::path& bag_path) -> std::unique_ptr<IBag>;
