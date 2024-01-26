@@ -100,22 +100,6 @@ struct InMemoryBagParameters {
 [[nodiscard]] auto createTopicNamesFilter(const std::vector<std::string>& topic_names)
     -> std::shared_ptr<const IBagRecordFilter>;
 
-//! Pretty print bag info
-auto printBagInfo(const BagInfo& bag_info, std::ostream& out) -> void;
-
 auto printTabulatedBagInfo(const BagInfo& bag_info, std::ostream& out) -> void;
 
-/// Read through the whole bag and serialize the metadata to a comma separated list of values.
-/// Each message fill a line, the order being the one returned by the bag iterator.
-/// The first line contains the field name. Nested arguments are flattened (e.g. TopicAttributes).
-/// NOTE: don't use "," as delim, as types can have a comma as part of the type and will create
-/// problem parsing it.
-auto exportLogRecordMetadataToCSV(const IBag& bag, std::ostream& output_csv, char delim = '|') -> void;
-
-/// Read through the whole bag and serialize the metadata to a json file.
-/// The file format will be a json array where each element is the the protobuf json serialization
-/// of proto::LogRecordMetadata.
-/// NOTE: for big bag this function can take long time and create massively large files. Prefer the
-/// CSV format.
-auto exportLogRecordMetadataToJSONLines(const IBag& bag, std::ostream& output_json) -> void;
 }  // namespace eolo::bag
