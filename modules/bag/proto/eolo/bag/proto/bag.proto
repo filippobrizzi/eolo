@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package eolo.bag.proto;
+
+message TopicAttribute {
+    bool qos = 1;
+    bool cache = 2;
+    // Transport?
+}
+
+message LogRecordMetadata {
+  //  Note: source_id is expected to mirror the format of eolo::uuid
+  string source_id = 1;
+  uint64 timestamp_ns = 2;
+  uint64 sequence_id = 3;
+
+  string message_type = 4;
+  string topic = 5;
+  TopicAttribute topic_attribute = 6;
+
+  enum Serialization {
+    SERIALIZATION_UNSPECIFIED = 0;
+    SERIALIZATION_PROTOBUF = 1;
+    SERIALIZATION_JSON = 2;
+  }
+  Serialization serialization = 7;
+
+  uint32 message_size_bytes = 8;  // The size of the serialize message to be logged
+}
