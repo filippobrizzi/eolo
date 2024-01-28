@@ -12,4 +12,4 @@ namespace eolo::bag::tests {
 TEST(Example, Example) {
   EXPECT_TRUE(false);
 }
-}  // namespace eolo::@
+}  // namespace eolo::bag::tests
