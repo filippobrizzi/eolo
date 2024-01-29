@@ -22,8 +22,8 @@ define_module_library(
             eolo::base
             eolo::utils
             eolo::bag_proto
-            magic_enum
-            tabulate
+            magic_enum::magic_enum
+            tabulate::tabulate
         PRIVATE_LINK_LIBS ""
         SOURCES ${SOURCES}
         PUBLIC_INCLUDE_PATHS

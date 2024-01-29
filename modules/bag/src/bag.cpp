@@ -4,6 +4,8 @@
 
 #include "eolo/bag/bag.h"
 
+#include <chrono>
+
 #include <tabulate/table.hpp>
 
 #include "eolo/utils/utils.h"
